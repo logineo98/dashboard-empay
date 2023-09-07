@@ -1,0 +1,37 @@
+.liste_container {
+    background: $white;
+    border-radius: rem_calc(5);
+
+    .liste_name {
+        font-size: rem_calc(18);
+        color: $icon_color;
+        font-weight: 600;
+        padding: rem_calc(10);
+    }
+
+    .liste {
+        padding: rem_calc(10);
+
+        @import './haut_liste/haut_liste';
+    }
+
+    @import './modal_display_edit_delete/modal_display_edit_delete.scss';
+}
+
+span.column {
+    display: inline-block;
+    cursor: pointer;
+    background: rgba($color: $black, $alpha: 0.05);
+    padding: rem_calc(5);
+    border-radius: rem_calc(4);
+
+    &.success {
+        color: $success_color;
+    }
+
+    &.error {
+        color: $error_color;
+    }
+}
+
+@import './no_filtered_filtered_search';

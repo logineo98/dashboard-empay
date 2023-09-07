@@ -1,0 +1,9 @@
+.divider {
+    @include h_w($h: rem_calc(1), $w: 100%);
+    background: $divider_color;
+}
+
+// dark mode
+.divider.dark {
+    background: $icon_color;
+}

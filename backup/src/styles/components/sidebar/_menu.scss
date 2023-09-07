@@ -1,0 +1,171 @@
+// menu normal
+.menu {
+    margin-top: rem_calc(5);
+
+    &:first-child {
+        margin-top: 0;
+    }
+
+    .menu_icon_name_fleche {
+        @include df($ai: center, $jc: space-between);
+        padding: rem_calc(10);
+        transition: all 0.5s ease;
+
+        .menu_icon_name {
+            @include df($ai: center, $jc: space-between);
+
+            .menu_icon {
+                font-size: rem_calc(25);
+                color: $icon_color;
+            }
+
+            .menu_name {
+                margin-left: rem_calc(5);
+                color: $icon_color;
+            }
+        }
+
+        .fleche {
+            color: $icon_color;
+        }
+
+        &:hover {
+            background: rgba($color: $bg_haut_color, $alpha: 0.2);
+            border-top-left-radius: rem_calc(5);
+            border-top-right-radius: rem_calc(5);
+            transition: all 0.5s ease;
+
+            .menu_icon_name {
+                .menu_icon {
+                    @include hover_sidebar;
+                }
+
+                .menu_name {
+                    @include hover_sidebar;
+                }
+            }
+
+            .fleche {
+                @include hover_sidebar;
+            }
+        }
+    }
+
+    .sub_menu_container {
+        max-height: 0;
+        overflow-y: hidden;
+        background: rgba($color: $bg_haut_color, $alpha: 0.1);
+        padding: 0 0 0 rem_calc(40);
+        transition: all 0.5s ease;
+
+        .sub_menu {
+            .sub_menu_name_container {
+                display: block;
+                padding: rem_calc(10);
+
+                .sub_menu_name {
+                    font-size: rem_calc(14);
+                    color: $bg_haut_color;
+                }
+            }
+        }
+    }
+}
+
+// menu activated
+.menu {
+    .menu_icon_name_fleche.active {
+        background: rgba($color: $bg_haut_color, $alpha: 0.2);
+        border-top-left-radius: rem_calc(5);
+        border-top-right-radius: rem_calc(5);
+        border: rem_calc(1) solid $bg_haut_color;
+        transition: all 0.5s ease;
+
+        .menu_icon_name {
+            .menu_icon {
+                @include hover_sidebar;
+            }
+
+            .menu_name {
+                font-weight: 600;
+                @include hover_sidebar;
+            }
+        }
+
+        .fleche {
+            @include hover_sidebar;
+        }
+
+        &~.sub_menu_container {
+            background: rgba($color: $bg_haut_color, $alpha: 0.1);
+            max-height: rem_calc(500);
+            padding: rem_calc(5) 0 rem_calc(5) rem_calc(40);
+            border-bottom-left-radius: rem_calc(5);
+            border-bottom-right-radius: rem_calc(5);
+            transition: all 0.5s ease;
+
+            .sub_menu {
+                .sub_menu_name_container {
+                    display: block;
+                    padding: rem_calc(10);
+
+                    .sub_menu_name {
+                        font-size: rem_calc(14);
+                        color: $bg_haut_color;
+                    }
+                }
+
+                &:hover {
+                    background: rgba($color: $bg_haut_color, $alpha: 0.1);
+                    border-radius: rem_calc(5);
+                    transition: all 0.5s ease;
+                }
+            }
+        }
+    }
+
+
+}
+
+// sub menu activated
+.menu {
+    .menu_icon_name_fleche.active {
+        &~.sub_menu_container {
+            .sub_menu {
+                .sub_menu_name_container.active {
+                    background: rgba($color: $bg_haut_color, $alpha: 0.1);
+                    border-top-left-radius: rem_calc(5);
+                    border-bottom-left-radius: rem_calc(5);
+                    border: rem_calc(1) solid $bg_haut_color;
+
+                    .sub_menu_name {
+                        font-weight: 600;
+                        @include hover_sidebar;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// dark mode
+.menu.dark {
+    background: $black;
+
+    .menu_icon_name_fleche {
+        .menu_icon_name {
+
+            .menu_icon {
+                color: $bg_haut_color;
+            }
+
+            .menu_name {
+                color: $bg_haut_color;
+            }
+        }
+
+        .fleche {
+            color: $bg_haut_color;
+        }
+    }
+}

@@ -1,0 +1,81 @@
+.modal {
+    @include pos_abs_t_l;
+    @include h-w($h: 100vh, $w: 100%);
+    @include df($ai: center, $jc: center);
+    z-index: 5;
+
+    .overlay {
+        @include pos-abs-t-l;
+        @include h-w($h: 100%, $w: 100%);
+        background: $black;
+        opacity: 0.7;
+    }
+
+    .modal_container {
+        z-index: 10;
+        background: $white;
+        @include df($jc: space-between);
+        flex-direction: column;
+        max-height: 90%;
+        max-width: 90%;
+        border-radius: rem_calc(5);
+
+        .modal_header {
+            @include h_w($h: rem_calc(45), $w: 100%);
+            @include df($ai: center, $jc: space-between);
+            padding: rem_calc(10);
+
+            .header_name {
+                font-size: rem_calc(20);
+                color: $icon_color;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+
+            .close_icon {
+                color: $icon_color;
+                padding: rem_calc(5);
+                border-radius: 50%;
+                font-size: rem_calc(25);
+                background: $divider_color;
+                cursor: pointer;
+
+                &:hover {
+                    background: $black;
+                    color: $white;
+                    transition: all 0.5s ease;
+                }
+            }
+        }
+
+        .modal_content {
+            padding: rem_calc(10);
+            @include h_w($h: calc(100% - (rem_calc(45) * 2) + rem_calc(2)), $w: 100%);
+            max-height: 80%;
+            overflow-y: auto;
+        }
+
+        .modal_footer {
+            @include h_w($h: rem_calc(45), $w: 100%);
+            @include df($ai: center, $jc: space-between);
+            padding: rem_calc(10);
+
+            button {
+                @include button($w: 49%);
+                background: $bg_haut_color;
+
+                &.close {
+                    background: $btn_bg_color;
+                    color: $icon_color;
+                    font-weight: 600;
+
+                    &:hover {
+                        background: $icon_color;
+                        color: $white;
+                    }
+                }
+            }
+
+        }
+    }
+}

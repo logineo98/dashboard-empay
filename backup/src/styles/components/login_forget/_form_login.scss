@@ -1,0 +1,50 @@
+form.form_login {
+
+    .input_container {
+        @include input_container;
+    }
+
+    .remember_forget_password {
+        margin: rem_calc(20) 0;
+        @include df($ai: center, $jc: space-between);
+        color: $icon_color;
+
+        label {
+            @include df($ai: center, $jc: space-between);
+            width: rem_calc(115);
+            font-size: rem_calc(13);
+        }
+
+        a {
+            color: $bg_haut_color;
+            font-size: rem_calc(13);
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .connexion {
+        height: rem_calc(35);
+
+        button {
+            @include button;
+        }
+    }
+}
+
+// dark mode
+form.form_login.dark {
+    .input_container {
+        label {
+            color: $white;
+        }
+    }
+
+    .remember_forget_password {
+        label {
+            color: $white;
+        }
+    }
+}

@@ -1,0 +1,101 @@
+form.form_forget_password {
+
+    .search_email_or_username_or_phone_container {
+        .input_container {
+            @include input_container;
+        }
+
+        .forget_send_back {
+            @include forget_back;
+        }
+    }
+
+    .write_code_send_container {
+        .input_write_code_send_container {
+            margin-bottom: rem_calc(10);
+
+            label {
+                @include label;
+            }
+
+            .inputs_container {
+                @include df($ai: center, $jc: space-between);
+
+                input {
+                    @include input;
+                    width: 19%;
+                }
+            }
+        }
+
+        .resend_code_container {
+            margin: rem_calc(15) 0;
+            text-align: right;
+
+            span {
+                color: $bg_haut_color;
+                font-size: rem_calc(13);
+                cursor: pointer;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        .forget_write_code_send_back {
+            @include forget_back;
+        }
+    }
+
+    .write_new_password_container {
+        .input_container {
+            @include input_container;
+        }
+
+        .forget_write_new_password_back {
+            @include forget_back;
+        }
+    }
+
+    .succes_modify_password_container {
+        .message_success_container {
+            margin-bottom: rem_calc(10);
+            font-size: rem_calc(14);
+            text-align: justify;
+            color: $success_color;
+            height: rem_calc(40);
+        }
+
+        .forget_succes_modify_password_back {
+            @include forget_back($w: 100%, $jc: center);
+        }
+    }
+}
+
+// dark mode
+form.form_forget_password.dark {
+    .search_email_or_username_or_phone_container {
+        .input_container {
+            label {
+                color: $white;
+            }
+        }
+    }
+
+    .write_code_send_container {
+        .input_write_code_send_container {
+            label {
+                color: $white;
+            }
+        }
+    }
+
+    .write_new_password_container {
+        .input_container {
+            label {
+                color: $white;
+            }
+        }
+    }
+}

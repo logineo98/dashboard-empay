@@ -1,0 +1,23 @@
+.display_information_container {
+    @include df($ai: center, $jc: space-between);
+    flex-wrap: wrap;
+
+    .display_information {
+        width: 49%;
+        @include df;
+        flex-direction: column;
+        margin-bottom: rem_calc(10);
+
+        .title {
+            color: $icon_color;
+            margin-bottom: rem_calc(5);
+            font-weight: bold;
+        }
+
+        .value {
+            font-size: rem_calc(16);
+            text-align: justify;
+        }
+    }
+
+}

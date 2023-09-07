@@ -1,0 +1,10 @@
+.no_data {
+    width: 100%;
+    @include df($ai: center, $jc: center);
+    color: $icon_color;
+    font-weight: 600;
+    padding: rem_calc(50) 0;
+    border: rem_calc(1) solid rgba($color: $black, $alpha: 0.2);
+    border-radius: rem_calc(5);
+    text-align: center;
+}

@@ -1,0 +1,28 @@
+.add_edit_input_label_container {
+    @include input_container($h: rem_calc(40), $br: rem_calc(5));
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    .error {
+        font-size: rem_calc(14);
+        color: $error_color;
+        font-style: italic;
+    }
+}
+
+.edit_password {
+    font-size: rem_calc(14);
+    text-align: center;
+
+    .confirm_edit_password {
+        color: $bg_haut_color;
+        cursor: pointer;
+        font-style: italic;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

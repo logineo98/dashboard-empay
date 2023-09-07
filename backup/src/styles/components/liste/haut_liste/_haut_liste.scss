@@ -1,0 +1,7 @@
+.haut_liste {
+    margin-bottom: rem_calc(10);
+    @include df($ai: center, $jc: space-between);
+
+    @import './search';
+    @import './others';
+}

@@ -1,0 +1,15 @@
+.search_container {
+    position: relative;
+
+    .icon {
+        @include pos_abs_t_l($t: rem_calc(10), $l: rem_calc(10));
+        color: $icon_color;
+        cursor: pointer;
+    }
+
+    input {
+        @include input();
+        padding-left: rem_calc(35);
+    }
+
+}

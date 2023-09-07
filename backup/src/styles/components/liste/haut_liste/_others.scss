@@ -1,0 +1,26 @@
+.other_container {
+    @include df($ai: center, $jc: space-between);
+
+    .icon {
+        margin-right: rem_calc(15);
+        font-size: rem_calc(25);
+        color: $icon_color;
+        cursor: pointer;
+
+        &:hover {
+            color: $white;
+            background: $icon_color;
+            border-radius: 50%;
+            padding: rem_calc(5);
+        }
+
+        &:last-child {
+            margin-right: 0;
+            font-size: rem_calc(30);
+            background: $bg_haut_color;
+            color: $white;
+            border-radius: 50%;
+            padding: rem_calc(5);
+        }
+    }
+}

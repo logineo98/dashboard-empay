@@ -1,0 +1,28 @@
+.page_container {
+    background: $background_color;
+    height: 100vh;
+    overflow-y: auto;
+
+    @import '../page_container/header';
+
+    .body_container {
+        height: calc(100vh - rem_calc(60));
+        @include df();
+
+        @import '../sidebar/sidebar';
+
+        .right_part {
+            @include h_w($h: 100%, $w: calc(100vw - rem_calc(260)));
+            overflow-y: auto;
+            padding: rem_calc(10);
+            transition: all 0.5s ease;
+
+            &.active_icon {
+                width: 100vw;
+            }
+
+            @import './right_part_container';
+
+        }
+    }
+}

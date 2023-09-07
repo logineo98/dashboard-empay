@@ -1,0 +1,30 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "node_modules": true,
+        ".vscode": true,
+        "public": true,
+        "src/react-app-env.d.ts": true,
+        "src/reportWebVitals.ts": true,
+        "src/setupTests.ts": true,
+        "src/App.test.tsx": true,
+        "backup": true,
+        "backup_25_07_2023": true
+    },
+    "hide-files.files": [
+        "node_modules",
+        ".vscode",
+        "public",
+        "src/react-app-env.d.ts",
+        "src/reportWebVitals.ts",
+        "src/setupTests.ts",
+        "src/App.test.tsx",
+        "backup",
+        "backup_25_07_2023"
+    ]
+}

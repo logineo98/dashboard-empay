@@ -1,0 +1,236 @@
+@mixin df($ai: flex-start, $jc: flex-start, $dir: row) {
+    display: flex;
+    flex-direction: $dir;
+    align-items: $ai;
+    justify-content: $jc;
+}
+
+@mixin h100_w100 {
+    height: 100%;
+    width: 100%;
+}
+
+@mixin h_w($h: auto, $w: auto) {
+    height: $h;
+    width: $w;
+}
+
+@mixin image($of: cover) {
+    @include h100_w100;
+    object-fit: $of;
+}
+
+// position fixed
+@mixin pos_fix_t_l($t: 0, $l: 0) {
+    position: fixed;
+
+    top: $t;
+    left: $l;
+}
+
+// position absolute
+@mixin pos_abs_t_l($t: 0, $l: 0) {
+    position: absolute;
+
+    top: $t;
+    left: $l;
+}
+
+@mixin pos_abs_t_r($t: 0, $r: 0) {
+    position: absolute;
+
+    top: $t;
+    right: $r;
+}
+
+@mixin pos_abs_b_l($b: 0, $l: 0) {
+    position: absolute;
+
+    bottom: $b;
+    left: $l;
+}
+
+@mixin pos_abs_b_r($b: 0, $r: 0) {
+    position: absolute;
+
+    bottom: $b;
+    right: $r;
+}
+
+// position sticky
+@mixin pos_sticky_t_l($t: 0, $l: 0) {
+    position: sticky;
+
+    top: $t;
+    left: $l;
+}
+
+@mixin pos_sticky_t_r($t: 0, $r: 0) {
+    position: sticky;
+
+    top: $t;
+    right: $r;
+}
+
+@mixin pos_sticky_b_l($b: 0, $l: 0) {
+    position: sticky;
+
+    bottom: $b;
+    left: $l;
+}
+
+@mixin pos_sticky_b_r($b: 0, $r: 0) {
+    position: sticky;
+
+    bottom: $b;
+    right: $r;
+}
+
+@mixin label() {
+    display: inline-block;
+    font-size: rem_calc(12);
+    margin-bottom: rem_calc(5);
+    color: $icon_color;
+    font-weight: 600;
+}
+
+@mixin input($h: rem_calc(40), $w: 100%, $br: rem_calc(10)) {
+    @include h_w($h: $h, $w: $w);
+    padding: rem_calc(11);
+    border-radius: $br;
+    border: rem_calc(1) solid rgba($color: $black, $alpha: 0.2);
+    color: $icon_color;
+
+    &:focus {
+        outline: none;
+        border: rem_calc(1) solid $bg_haut_color;
+
+        &::placeholder {
+            padding-left: rem_calc(8);
+            transition: all 0.5s ease;
+        }
+    }
+
+    &.password {
+        padding-right: rem_calc(35);
+
+        &~.icon {
+            @include pos_abs_t_r($t: calc($h - rem_calc(9)), $r: rem_calc(11));
+            font-size: rem_calc(20);
+            color: rgba($color: $black, $alpha: 0.2);
+            cursor: pointer;
+        }
+
+        &:focus~.icon {
+            color: $bg_haut_color;
+        }
+    }
+
+    &.number {
+        text-align: center;
+    }
+}
+
+@mixin button($h: rem_calc(35), $w: 100%) {
+    border: none;
+    @include h_w($h: $h, $w: $w);
+    color: $white;
+    border-radius: rem_calc(5);
+    cursor: pointer;
+    @include df($ai: center, $jc: center);
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+@mixin input_container($h: rem_calc(40), $w: 100%, $br: rem_calc(10)) {
+    margin-bottom: rem_calc(10);
+    position: relative;
+
+    label {
+        @include label;
+    }
+
+    input {
+        @include input($h: $h, $w: $w, $br: $br);
+    }
+}
+
+@mixin forget_back($w: 49%, $jc: space-between) {
+    height: rem_calc(35);
+    @include df($ai: center, $jc: $jc);
+
+    button {
+        @include button;
+        width: $w;
+
+        &.back {
+            background: $btn_bg_color;
+            color: $icon_color;
+            font-weight: 600;
+
+            a {
+                @include button;
+                color: $icon_color;
+                font-weight: 600;
+            }
+
+            &:hover {
+                background: $icon_color;
+                color: $white;
+
+                a {
+                    color: $white;
+                }
+            }
+        }
+    }
+}
+
+@mixin button_header($bg: rgba($color: $bg_haut_color, $alpha: 0.2), $hover_bg: $bg_haut_color, $dark: false) {
+    background: $bg;
+    @include df($ai: center);
+    cursor: pointer;
+    border: none;
+    border-radius: rem_calc(5);
+
+    &:hover {
+        background: $hover_bg;
+        transition: all 0.5s ease;
+
+        .icon {
+            color: $white;
+        }
+    }
+
+    .icon {
+        font-size: rem_calc(30);
+        color: $bg_haut_color;
+        padding: rem_calc(5);
+
+    }
+
+    @if $dark {
+        border: rem_calc(1) solid $bg_haut_color;
+    }
+}
+
+// pour la croix de input search
+@mixin search_croix($fz: rem_calc(16), $pd: rem_calc(2)) {
+
+    //  Sélecteur pour styliser la croix 
+    &::-webkit-search-cancel-button {
+        cursor: pointer;
+        font-size: $fz;
+
+        &:hover {
+            padding: $pd;
+        }
+    }
+}
+
+@mixin hover_sidebar() {
+    color: $bg_haut_color;
+    // transition: all 0.5s ease;
+}

@@ -1,0 +1,85 @@
+// login or forget password normal
+.login {
+    background-image: linear-gradient($bg_haut_color 50%, $background_color 50%);
+    height: 100vh;
+    overflow-y: auto;
+    @include df($ai: center, $jc: center);
+    position: relative;
+
+    .light_dark_icon_container {
+        @include button_header($bg: $white, $hover_bg: $icon_color );
+        @include pos_abs_t_r($t: rem_calc(5), $r: rem_calc(5));
+    }
+
+    .container {
+        background: $white;
+        @include h_w($w: rem_calc(450));
+        border-radius: rem_calc(10);
+        box-shadow: rem_calc(5) rem_calc(5) rem_calc(10) $divider_color;
+        position: relative;
+
+        .logo_img {
+            @include df($ai: center, $jc: center);
+            padding: rem_calc(20) rem_calc(20) 0;
+
+            .img_container {
+                @include h_w($h: rem_calc(70), $w: rem_calc(70));
+                padding: rem_calc(7);
+                border-radius: 50%;
+                border: rem_calc(1) solid $icon_color;
+
+                img {
+                    @include image;
+                    border-radius: 50%;
+                }
+            }
+        }
+
+        .icon_title {
+            @include df($ai: center, $jc: center);
+            padding: rem_calc(20) rem_calc(20) 0;
+
+            .icon {
+                color: $icon_color;
+                font-size: rem_calc(24);
+            }
+
+            .title {
+                color: $icon_color;
+                font-size: rem_calc(20);
+                margin-left: rem_calc(5);
+            }
+        }
+
+        .form_container {
+            padding: 0 rem_calc(20) rem_calc(20);
+
+            @import '../components/login_forget/form_login';
+            @import '../components/login_forget/form_forget';
+        }
+    }
+}
+
+// dark mode
+.login.dark {
+    background-image: linear-gradient($black 50%, $icon_color 50%);
+
+    .container {
+        background: $black;
+        border: rem_calc(1) solid $bg_haut_color;
+
+        .logo_img {
+            .img_container {
+                border: rem_calc(1) solid $white;
+            }
+        }
+
+        .icon_title {
+
+            .icon,
+            .title {
+                color: $white;
+            }
+        }
+    }
+}

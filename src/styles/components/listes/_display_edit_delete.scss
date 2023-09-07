@@ -1,0 +1,46 @@
+.display_edit_delete {
+    .vertical_icon_container {
+        .vertical_icon {
+            font-size: rem_calc(22);
+            cursor: pointer;
+        }
+    }
+}
+
+.display_edit_delete_container {
+    width: 100%;
+
+    .container {
+        @include df($ai: center, $jc: flex-start);
+        margin-top: rem_calc(5);
+        padding: rem_calc(5);
+        cursor: pointer;
+
+        &:first-child {
+            margin-top: 0;
+        }
+
+        .container_icon {
+            font-size: rem_calc(18);
+            color: $icon_color;
+        }
+
+        .container_name {
+            font-size: rem_calc(14);
+            margin-left: rem_calc(5);
+            color: $icon_color;
+        }
+
+        &:hover {
+            background: rgba($color: $black, $alpha: 0.1);
+            border-radius: rem_calc(5);
+        }
+    }
+}
+
+.popup-content {
+    width: auto !important;
+    padding: rem_calc(8) !important;
+    @include df($ai: center !important, $jc: center !important);
+    z-index: 4 !important;
+}

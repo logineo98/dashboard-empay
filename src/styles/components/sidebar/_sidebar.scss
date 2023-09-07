@@ -1,0 +1,28 @@
+// sidebar normal
+.sidebar {
+    background: $white;
+    @include h_w($h: 100%, $w: rem_calc(260));
+    border-right: rem_calc(1) solid $divider_color;
+    overflow-y: auto;
+    padding: rem_calc(10);
+
+    @import './menu';
+}
+
+// dark mode
+.sidebar.dark {
+    background: $black;
+    border-right: rem_calc(1) solid $bg_haut_color;
+}
+
+// sidebar with only icon
+.sidebar.active_icon {
+    width: 0;
+    overflow-x: hidden;
+    padding: 0;
+    transition: all 0.5s ease;
+
+    .menu {
+        opacity: 0;
+    }
+}

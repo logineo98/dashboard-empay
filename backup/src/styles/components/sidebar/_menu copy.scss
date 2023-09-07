@@ -1,0 +1,156 @@
+// sidebar with menu normal
+.menu {
+    margin-bottom: rem_calc(10);
+
+    .menu_icon_name_fleche {
+        @include df($ai: center, $jc: space-between);
+        border-top-right-radius: rem_calc(5);
+        border-top-left-radius: rem_calc(5);
+        padding: rem_calc(10);
+        cursor: pointer;
+
+        .menu_icon_name {
+            @include df($ai: center);
+
+            .menu_icon {
+                color: $icon_color;
+                font-size: rem_calc(25);
+            }
+
+            .menu_name {
+                color: $icon_color;
+                margin-left: rem_calc(5);
+                font-size: rem_calc(15);
+            }
+        }
+
+        .fleche {
+            color: $icon_color;
+            font-size: rem_calc(17);
+        }
+
+        &:hover {
+            background-color: rgba($color: $bg_haut_color, $alpha: 0.2);
+            transition: background-color 0.5s ease;
+
+            .menu_icon_name {
+                .menu_icon {
+                    @include hover_sidebar;
+                }
+
+                .menu_name {
+                    @include hover_sidebar;
+                }
+            }
+
+            .fleche {
+                @include hover_sidebar;
+            }
+        }
+    }
+
+    .sub_menu_container {
+        position: relative;
+        max-height: 0;
+        overflow-y: hidden;
+        transition: max-height 0.5s ease;
+        background: rgba($color: $bg_haut_color, $alpha: 0.2);
+        border-bottom-left-radius: rem_calc(5);
+        border-bottom-right-radius: rem_calc(5);
+
+        .sub_menu {
+            .sub_menu_name_container {
+                .sub_menu_name {
+                    display: block;
+                    color: $icon_color;
+                    font-size: rem_calc(14);
+                    margin: 0 0 0 rem_calc(50);
+                    padding: rem_calc(10);
+                    border-radius: rem_calc(5);
+                    color: $bg_haut_color;
+                }
+            }
+
+            &:first-child {
+                .sub_menu_name_container {
+                    .sub_menu_name {
+                        margin-top: rem_calc(5);
+                    }
+                }
+            }
+
+            &:hover {
+                .sub_menu_name_container {
+                    .sub_menu_name {
+                        background: rgba($color: $bg_haut_color, $alpha: 0.2);
+                        @include hover_sidebar;
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+// sidebar with menu activated
+.menu {
+    .menu_icon_name_fleche.active {
+        background: rgba($color: $bg_haut_color, $alpha: 0.2);
+
+        .menu_icon_name {
+            .menu_icon {
+                color: $bg_haut_color;
+            }
+
+            .menu_name {
+                color: $bg_haut_color;
+            }
+        }
+
+        .fleche {
+            color: $bg_haut_color;
+        }
+    }
+}
+
+// sidebar with sub menu display
+.menu {
+    .sub_menu_container.active {
+        max-height: rem_calc(500);
+        transition: max-height 0.5s ease;
+    }
+}
+
+// sidebar with sub menu activated
+.menu {
+    .sub_menu {
+        .sub_menu_name_container.active {
+            .sub_menu_name {
+                background: rgba($color: $bg_haut_color, $alpha: 0.2);
+                font-weight: 600;
+                color: $bg_haut_color;
+                transition: all 0.5s ease;
+            }
+        }
+    }
+}
+
+// dark mode
+.menu.dark {
+    .menu_icon_name_fleche {
+        .menu_icon_name {
+
+            .menu_icon {
+                color: $bg_haut_color;
+            }
+
+            .menu_name {
+                color: $bg_haut_color;
+            }
+        }
+
+        .fleche {
+            color: $bg_haut_color;
+        }
+    }
+}

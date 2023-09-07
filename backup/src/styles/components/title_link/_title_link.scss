@@ -1,0 +1,36 @@
+.title_link_container {
+    background: $white;
+    padding: rem_calc(10);
+    border-radius: rem_calc(5);
+    @include df($ai: center, $jc: space-between);
+    margin-bottom: rem_calc(10);
+
+    .title {
+        font-size: rem_calc(20);
+        color: $icon_color;
+        font-weight: 600;
+        text-transform: uppercase;
+    }
+
+    .link_container {
+        @include df($ai: center, $jc: space-between);
+
+        .link {
+            color: $bg_haut_color;
+        }
+
+        .arrow_link_name_container {
+            @include df($ai: center, $jc: space-between);
+
+            .arrow_right_icon {
+                color: $icon_color;
+                font-size: rem_calc(20);
+            }
+
+            .link_name {
+                color: $icon_color;
+                font-size: rem_calc(14);
+            }
+        }
+    }
+}

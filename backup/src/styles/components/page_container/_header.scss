@@ -1,0 +1,353 @@
+// header normal
+.header {
+    background: $white;
+    height: rem_calc(60);
+    @include df($ai: center, $jc: center);
+    padding: rem_calc(10);
+    border-bottom: rem_calc(1) solid $divider_color;
+
+    .header_container {
+        @include h100_w100;
+        @include df($ai: center);
+
+        .logo_site_name_icon_menu_container {
+            @include h_w($h: 100%, $w: rem_calc(250));
+            @include df($ai: center, $jc: space-between);
+
+            .logo_site_name {
+                @include h_w($h: 100%);
+                @include df($ai: center);
+
+                .logo_container {
+                    @include h_w($h: rem_calc(40), $w: rem_calc(40));
+
+                    img {
+                        @include image;
+                        border-radius: 50%;
+                    }
+                }
+
+                .site_name {
+                    font-size: rem_calc(25);
+                    font-weight: 600;
+                    text-transform: uppercase;
+                    margin-left: rem_calc(8);
+                    color: $icon_color;
+                }
+            }
+
+            .icon_menu_container {
+                @include button_header;
+            }
+        }
+
+        .full_screen_search_options_profil_container {
+            @include h_w($h: 100%, $w: calc(100% - rem_calc(250)));
+            @include df($ai: center, $jc: space-between);
+            padding-left: rem_calc(10);
+
+            .full_screen_search_container {
+                @include df($ai: center);
+                @include h_w($h: rem_calc(40), $w: rem_calc(215));
+
+                .full_screen_icon_container {
+                    @include button_header;
+                }
+
+                .search_container {
+                    margin-left: rem_calc(10);
+                    position: relative;
+                    @include h100_w100;
+                    cursor: pointer;
+
+                    .search_icon {
+                        @include pos_abs_t_l($t: rem_calc(10), $l: rem_calc(10));
+                        color: $bg_haut_color;
+                        font-size: rem_calc(18);
+                    }
+
+                    .search {
+                        background: rgba($color: $grey, $alpha: 0.1);
+                        @include h100_w100;
+                        display: inline-block;
+                        border-radius: rem_calc(5);
+                        border: rem_calc(1) solid rgba($color: $black, $alpha: 0.2);
+                        color: $icon_color;
+                        padding-top: rem_calc(12);
+                        padding-left: rem_calc(30);
+                        font-size: rem_calc(12);
+                    }
+
+                    .text_shortcut {
+                        background: $white;
+                        @include pos_abs_t_r($t: rem_calc(7), $r: rem_calc(10));
+                        padding: rem_calc(7);
+                        font-size: rem_calc(10);
+                        border-radius: rem_calc(5);
+                    }
+
+                    &:hover {
+                        .search {
+                            background: rgba($color: $grey, $alpha: 0.2);
+                            transition: all 0.5s ease;
+                        }
+                    }
+                }
+            }
+
+            .options_profil_container {
+                @include df($ai: center);
+
+                .icon_container {
+                    margin-left: rem_calc(10);
+                    @include button_header;
+                }
+
+                .profil_container {
+                    margin-left: rem_calc(10);
+                    @include df($ai: center);
+                    border: none;
+                    background: rgba($color: $bg_haut_color, $alpha: 0.2);
+                    padding: rem_calc(7);
+                    border-radius: rem_calc(20);
+                    cursor: pointer;
+                    position: relative;
+                    overflow-y: visible;
+
+                    .profil_img_container {
+                        @include df($ai: center);
+                        @include h_w($h: rem_calc(26), $w: rem_calc(26));
+
+                        img {
+                            @include image;
+                            border-radius: 50%;
+                            border: rem_calc(1) solid rgba($color: $grey, $alpha: 0.1);
+                        }
+                    }
+
+                    .setting_icon {
+                        color: $bg_haut_color;
+                        margin-left: rem_calc(10);
+                        font-size: rem_calc(20);
+                    }
+
+                    .options_container {
+                        display: none;
+
+                        .option {
+                            margin-top: rem_calc(5);
+                            @include df($ai: center);
+                            padding: rem_calc(10) rem_calc(5);
+                            color: $icon_color;
+                            @include h_w($w: 100%);
+
+                            &:first-child {
+                                margin-top: 0;
+                            }
+
+                            .option_icon {
+                                font-size: rem_calc(20);
+                            }
+
+                            .option_name {
+                                margin-left: rem_calc(10);
+                                font-size: rem_calc(14);
+                            }
+
+                            &:hover {
+                                background: rgba($color: $bg_haut_color, $alpha: 0.2);
+                                border-radius: rem_calc(5);
+
+                                .option_icon,
+                                .option_name {
+                                    color: $bg_haut_color;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background: $bg_haut_color;
+                        transition: all 0.5s ease;
+
+                        .setting_icon {
+                            color: $white;
+                        }
+                    }
+
+                    &:focus {
+                        background: $bg_haut_color;
+
+                        .setting_icon {
+                            color: $white;
+                        }
+
+                        .options_container {
+                            @include pos_abs_t_r($t: rem_calc(45));
+                            @include h_w($w: rem_calc(200));
+                            padding: rem_calc(5);
+                            border-radius: rem_calc(5);
+                            @include df($dir: column);
+                            background: $white;
+                            box-shadow: rem_calc(5) rem_calc(5) rem_calc(10) $divider_color;
+
+                            .option {
+                                margin-top: rem_calc(5);
+                                @include df($ai: center);
+                                padding: rem_calc(10) rem_calc(5);
+                                color: $icon_color;
+                                @include h_w($w: 100%);
+
+                                &:first-child {
+                                    margin-top: 0;
+                                }
+
+                                .option_icon {
+                                    font-size: rem_calc(20);
+                                    color: $icon_color;
+                                }
+
+                                .option_name {
+                                    margin-left: rem_calc(10);
+                                    font-size: rem_calc(14);
+                                    color: $icon_color;
+                                }
+
+                                &:hover {
+                                    background: rgba($color: $bg_haut_color, $alpha: 0.2);
+                                    border-radius: rem_calc(5);
+
+                                    .option_icon,
+                                    .option_name {
+                                        color: $bg_haut_color;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .search_close_container {
+            @include df($ai: center, $jc: space-between);
+            @include h_w($h: 100%, $w: calc(100% - rem_calc(250)));
+
+            form {
+                padding-left: rem_calc(10);
+                @include h_w($h: 100%, $w: calc(100% - rem_calc(40)));
+
+                input {
+                    @include input($br: rem_calc(5));
+                    @include search_croix;
+                }
+            }
+
+            button {
+                @include button_header;
+            }
+        }
+    }
+}
+
+// dark mode
+.header.dark {
+    background: $black;
+    border-bottom: rem_calc(1) solid $bg_haut_color;
+
+    .header_container {
+        .logo_site_name_icon_menu_container {
+            .logo_site_name {
+                .site_name {
+                    color: $white;
+                }
+            }
+
+            .icon_menu_container {
+                @include button_header($dark: true);
+            }
+        }
+
+        .full_screen_search_options_profil_container {
+            .full_screen_search_container {
+                .full_screen_icon_container {
+                    @include button_header($dark: true);
+                }
+
+                .search_container {
+                    .search {
+                        border: rem_calc(1) solid $bg_haut_color;
+                    }
+                }
+            }
+
+            .options_profil_container {
+                .light_dark_icon_container {
+                    @include button_header($dark: true);
+                }
+
+                .profil_container {
+                    border: rem_calc(1) solid $bg_haut_color;
+
+                    .options_container {
+                        background: $black;
+                        border: rem_calc(1) solid $bg_haut_color;
+
+                        .option {
+                            &:hover {
+                                background: rgba($color: $bg_haut_color, $alpha: 0.5);
+
+                                .option_icon,
+                                .option_name {
+                                    color: $bg_haut_color;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        background: $bg_haut_color;
+
+                        .setting_icon {
+                            color: $white;
+                        }
+                    }
+
+                    &:focus {
+                        background: $bg_haut_color;
+
+                        .setting_icon {
+                            color: $white;
+                        }
+
+                        .options_container {
+                            background: $black;
+
+                            .option {
+
+                                .option_icon,
+                                .option_name {
+                                    color: $bg_haut_color;
+                                }
+
+                                &:hover {
+
+                                    .option_icon,
+                                    .option_name {
+                                        color: $white;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .search_close_container {
+            button {
+                @include button_header($dark: true);
+            }
+        }
+    }
+}
