@@ -10,9 +10,7 @@
         margin-bottom: rem_calc(10);
 
         .title {
-            color: $icon_color;
-            margin-bottom: rem_calc(5);
-            font-weight: bold;
+            @include label;
         }
 
         .value {
@@ -21,10 +19,23 @@
         }
 
         .img_container {
-            @include h_w($h: rem_calc(150), $w: 100%);
+            @include h_w($h: rem_calc(140), $w: 100%);
 
             img {
                 @include image;
+            }
+        }
+
+        &.w_100 {
+            width: 100%;
+
+            .img_container {
+                @include h_w($h: rem_calc(140), $w: 100%);
+
+                img {
+                    @include image($of: contain);
+                    border-radius: rem_calc(5);
+                }
             }
         }
     }

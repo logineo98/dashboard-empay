@@ -18,14 +18,16 @@ const HautListe: FC<COMPONENT_TYPE> = (props) => {
     const [reduxLoading, setReduxLoading] = useState(false)
 
     const { loadingAdmin } = useSelector((state: ROOT_REDUCER_TYPE) => state.admin)
+    const { loadingCustomer } = useSelector((state: ROOT_REDUCER_TYPE) => state.customer)
 
     useEffect(() => {
         switch (title) {
             case 'admin': setReduxLoading(loadingAdmin); break
+            case 'customer': setReduxLoading(loadingCustomer); break
 
             default: setReduxLoading(false); break
         }
-    }, [title, loadingAdmin])
+    }, [title, loadingAdmin, loadingCustomer])
 
     return (
         <div className='haut_liste'>

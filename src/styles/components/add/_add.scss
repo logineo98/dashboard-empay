@@ -12,6 +12,56 @@
     }
 }
 
+.add_edit_file_label_container {
+    @include df;
+    flex-direction: column;
+
+    label {
+        @include label;
+    }
+
+    .choose_logo_cancel_container {
+        @include df($ai: center);
+
+        label.choose_logo,
+        label.cancel {
+            background: $bg_haut_color;
+            color: $white;
+            padding: rem_calc(10);
+            border-radius: rem_calc(5);
+            cursor: pointer;
+
+            &:hover {
+                opacity: 0.8;
+            }
+
+            input[type='file'] {
+                display: none;
+            }
+        }
+
+        label.cancel {
+            margin-left: rem_calc(10);
+        }
+    }
+
+    label.preview_img_container,
+    label.img_container {
+        @include h_w($h: rem_calc(140), $w: 100%);
+
+        img {
+            @include image($of: contain);
+            border-radius: rem_calc(5);
+        }
+    }
+
+    .error {
+        font-size: rem_calc(14);
+        color: $error_color;
+        font-style: italic;
+    }
+}
+
 .edit_password {
     font-size: rem_calc(14);
     text-align: center;

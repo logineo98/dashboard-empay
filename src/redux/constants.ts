@@ -1,8 +1,9 @@
 export const api = 'http://192.168.50.82:8000/api/v1'
+export const api_img = 'http://192.168.50.82:9000'
 
 export const admin = `${api}/admins`
 export const customer = `${api}/customers`
-export const api_img = 'http://192.168.50.82:9000'
+export const partner = `${api}/partenaires`
 
 // admin
 export const LOADING_ADMIN = 'LOADING_ADMIN'
@@ -23,3 +24,11 @@ export const LOADING_CUSTOMER = 'LOADING_CUSTOMER'
 export const ERROR_CUSTOMER = 'ERROR_CUSTOMER'
 export const GET_ALL_CUSTOMERS = 'GET_ALL_CUSTOMERS'
 export const ACTIVATED_OR_UNACTIVATED_ACCOUNT_CUSTOMER = 'ACTIVATED_OR_UNACTIVATED_ACCOUNT_CUSTOMER'
+
+// partner
+export const LOADING_PARTNER = 'LOADING_PARTNER'
+export const ERROR_PARTNER = 'ERROR_PARTNER'
+export const GET_ALL_PARTNERS = 'GET_ALL_PARTNERS'
+export const ADD_PARTNER = 'ADD_PARTNER'
+export const EDIT_PARTNER = 'EDIT_PARTNER'
+export const DELETE_PARTNER = 'DELETE_PARTNER'

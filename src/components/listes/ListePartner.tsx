@@ -2,37 +2,31 @@ import React, { FC, useState } from 'react'
 import ListeContainer from '../liste/ListeContainer'
 import Liste from '../liste/Liste'
 import { COLUMN_DATA_TABLE_TYPE } from '../../utils/types'
-import Popup from 'reactjs-popup'
-import { useSelector } from 'react-redux'
 import { ROOT_REDUCER_TYPE } from '../../redux/store'
-import { toast } from 'react-toastify'
-import AdminModal from '../liste/modal_display_edit_delete/AdminModal'
+import { useSelector } from 'react-redux'
+import Popup from 'reactjs-popup'
 
 // importation icons
 import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai'
 import { CiEdit } from 'react-icons/ci'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import PartnerModal from '../liste/modal_display_edit_delete/PartnerModal'
 
 type COMPONENT_TYPE = {
     title: string
     setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ListeAdmin: FC<COMPONENT_TYPE> = (props) => {
+const ListePartner: FC<COMPONENT_TYPE> = (props) => {
     const { title, setOpenAddModal } = props
 
     const [value, setValue] = useState<COLUMN_DATA_TABLE_TYPE>()
     const [seeModalDisplayEditDelete, setSeeModalDisplayEditDelete] = useState(false)
     const [type, setType] = useState('')
 
-    const { allAdmins, admin } = useSelector((state: ROOT_REDUCER_TYPE) => state.admin)
+    const { allPartners } = useSelector((state: ROOT_REDUCER_TYPE) => state.partner)
 
-    const data: Array<COLUMN_DATA_TABLE_TYPE> = allAdmins
-    // const data = [
-    //     { id: '1', username: 'tznation', name: 'Cheick Oumar Diabaté', email: 'c.oumar@gmail.com', role: 'Super administrateur', createdAt: new Date(), updatedAt: new Date() },
-    //     { id: '2', username: 'soul', name: 'Souleymane', email: 'soul@gmail.com', role: 'admin', createdAt: new Date(), updatedAt: new Date() },
-    //     { id: '3', username: 'dolo', name: 'Dolo akougnon', email: 'dolo@gmail.com', role: 'admin', createdAt: new Date(), updatedAt: new Date() },
-    // ]
+    const data: Array<COLUMN_DATA_TABLE_TYPE> = allPartners
 
     const handleDisplay = (type: string, value: COLUMN_DATA_TABLE_TYPE) => {
         if (type === 'afficher') {
@@ -44,23 +38,16 @@ const ListeAdmin: FC<COMPONENT_TYPE> = (props) => {
             setValue(value)
             setType('modifier')
         } else if (type === 'supprimer') {
-            if (value?.role === 'Super administrateur') toast.warn('Le super administrateur ne peut pas être supprimé.')
-            else if (value?.id === admin?.id) toast.warn('L\'administrateur connecté ne peut pas être supprimé.')
-            else {
-                setSeeModalDisplayEditDelete(true)
-                setValue(value)
-                setType('supprimer')
-            }
+            setSeeModalDisplayEditDelete(true)
+            setValue(value)
+            setType('supprimer')
         }
     }
 
     const columns = [
         { name: <h3>#</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
-        { name: <h3>Nom d'utilisateur</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.username, sortable: true },
-        { name: <h3>Nom complet</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
-        { name: <h3>Email</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.email, sortable: true },
-        { name: <h3>Rôle</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.role, sortable: true },
-        { name: <h3>Connecté</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.id === admin.id ? <span className='column success'>Oui</span> : <span className='column error'>Non</span>, },
+        { name: <h3>Nom</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
+        { name: <h3>Description</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.description, sortable: true },
         {
             name: <h3 style={{ width: '100%', textAlign: 'center' }}>Action</h3>,
             cell: (row: COLUMN_DATA_TABLE_TYPE) => (
@@ -89,14 +76,14 @@ const ListeAdmin: FC<COMPONENT_TYPE> = (props) => {
     ]
 
     return (
-        <ListeContainer name='Liste des administrateurs'>
+        <ListeContainer name='Liste des partenaires'>
             <>
                 <Liste title={title} columns={columns} data={data} setOpenAddModal={setOpenAddModal} />
 
-                <AdminModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
+                <PartnerModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
             </>
         </ListeContainer>
     )
 }
 
-export default ListeAdmin
+export default ListePartner

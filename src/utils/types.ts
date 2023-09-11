@@ -16,10 +16,7 @@ export type ADMIN_TYPE = {
     username: string
     name: string
     email: string
-    role?: string
     password?: string
-    createdAt?: Date
-    updatedAt?: Date
 }
 
 export type INITIAL_ADMIN_STATE_TYPE = {
@@ -59,6 +56,23 @@ export type INITIAL_CUSTOMER_STATE_TYPE = {
 }
 
 /***************************************************************
+ * PARTNER
+***************************************************************/
+export type PARTNER_TYPE = {
+    id?: string
+    name: string
+    description: string
+    logo: string | File
+}
+
+export type INITIAL_PARTNER_STATE_TYPE = {
+    partner: null | CUSTOMER_TYPE
+    allPartners: Array<PARTNER_TYPE>
+    loadingPartner: boolean
+    error: any
+}
+
+/***************************************************************
  * COLUMN DATA TABLE
 ***************************************************************/
 export type COLUMN_DATA_TABLE_TYPE = {
@@ -76,6 +90,8 @@ export type COLUMN_DATA_TABLE_TYPE = {
     photo: string
     status: boolean
     signature: string
+    description: string
+    logo: string | File
     createdAt: Date
     updatedAt: Date
 }

@@ -83,7 +83,6 @@ export const _resetPassword = (data: { id: string, password: string }, setDispla
     }
 }
 
-
 export const _getAdmin = () => async (dispatch: any) => {
     try {
         dispatch(_loadingAdmin())

@@ -86,12 +86,13 @@
     right: $r;
 }
 
-@mixin label() {
+@mixin label($fz: rem_calc(12), $tt: uppercase) {
     display: inline-block;
-    font-size: rem_calc(12);
+    font-size: $fz;
     margin-bottom: rem_calc(5);
     color: $icon_color;
     font-weight: 600;
+    text-transform: $tt;
 }
 
 @mixin input($h: rem_calc(40), $w: 100%, $br: rem_calc(10)) {
@@ -131,6 +132,25 @@
     }
 }
 
+@mixin textarea($h: rem_calc(140), $w: 100%, $br: rem_calc(10), ) {
+    @include h_w($h: $h, $w: $w);
+    padding: rem_calc(11);
+    border-radius: $br;
+    border: rem_calc(1) solid rgba($color: $black, $alpha: 0.2);
+    color: $icon_color;
+    resize: none;
+
+    &:focus {
+        outline: none;
+        border: rem_calc(1) solid $bg_haut_color;
+
+        &::placeholder {
+            padding-left: rem_calc(8);
+            transition: all 0.5s ease;
+        }
+    }
+}
+
 @mixin button($h: rem_calc(35), $w: 100%) {
     border: none;
     @include h_w($h: $h, $w: $w);
@@ -144,16 +164,20 @@
     }
 }
 
-@mixin input_container($h: rem_calc(40), $w: 100%, $br: rem_calc(10)) {
+@mixin input_container($h: rem_calc(40), $w: 100%, $br: rem_calc(10), $fz: rem_calc(12), $tt: uppercase) {
     margin-bottom: rem_calc(10);
     position: relative;
 
     label {
-        @include label;
+        @include label($fz: $fz, $tt: $tt);
     }
 
     input {
         @include input($h: $h, $w: $w, $br: $br);
+    }
+
+    textarea {
+        @include textarea;
     }
 }
 
@@ -208,7 +232,6 @@
         font-size: rem_calc(30);
         color: $bg_haut_color;
         padding: rem_calc(5);
-
     }
 
     @if $dark {
