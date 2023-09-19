@@ -14,7 +14,12 @@
         "src/setupTests.ts": true,
         "src/App.test.tsx": true,
         "backup": true,
-        "backup_25_07_2023": true
+        "backup_25_07_2023": true,
+        ".gitignore": true,
+        "package-lock.json": true,
+        "package.json": true,
+        "README.md": true,
+        "tsconfig.json": true
     },
     "hide-files.files": [
         "node_modules",
@@ -25,6 +30,11 @@
         "src/setupTests.ts",
         "src/App.test.tsx",
         "backup",
-        "backup_25_07_2023"
+        "backup_25_07_2023",
+        ".gitignore",
+        "package-lock.json",
+        "package.json",
+        "README.md",
+        "tsconfig.json"
     ]
 }

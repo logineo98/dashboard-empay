@@ -13,16 +13,18 @@ type COMPONENT_TYPE = {
     width?: number
     loading?: boolean
     show_modal_bottom?: boolean
+    error_data?: Object
+    setErrorData?: React.Dispatch<React.SetStateAction<any | undefined>>
     handleSubmit?: () => void
-    error_data?: any
     setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 const Modal: FC<COMPONENT_TYPE> = (props) => {
-    const { children, setOpenAddModal, title, close_btn_name, error_data, handleSubmit, loading, send_btn_name, show_modal_bottom, width } = props
+    const { children, setOpenAddModal, title, close_btn_name, error_data, setErrorData, handleSubmit, loading, send_btn_name, show_modal_bottom, width } = props
 
     const handleCloseModal = () => {
         setOpenAddModal(false)
+        error_data && setErrorData && setErrorData(error_data)
     }
 
     return (

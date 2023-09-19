@@ -104,7 +104,7 @@ const AdminModal: FC<COMPONENT_TYPE> = (props) => {
                 }
 
                 {type === 'modifier' &&
-                    <Modal title={'Modification de l\'administrateur'} loading={loadingAdmin} setOpenAddModal={setSeeModalDisplayEditDelete} show_modal_bottom handleSubmit={handleSubmit}>
+                    <Modal title={'Modification de l\'administrateur'} loading={loadingAdmin} setOpenAddModal={setSeeModalDisplayEditDelete} show_modal_bottom handleSubmit={handleSubmit} error_data={data} setErrorData={setErr}>
                         <div className='modal_content'>
                             <div className='add_edit_input_label_container'>
                                 <label htmlFor='username'>Nom d'utilisateur</label>

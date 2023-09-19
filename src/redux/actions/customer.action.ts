@@ -4,11 +4,11 @@ import { toast } from 'react-toastify'
 
 const token = localStorage.getItem('token')
 
-export const _loadingCustomer = () => (dispatch: any) => {
+const _loadingCustomer = () => (dispatch: any) => {
     dispatch({ type: LOADING_CUSTOMER })
 }
 
-export const _errorCustomer = (payload: any) => (dispatch: any) => {
+const _errorCustomer = (payload: any) => (dispatch: any) => {
     dispatch({ type: ERROR_CUSTOMER, payload })
 }
 

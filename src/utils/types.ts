@@ -66,9 +66,25 @@ export type PARTNER_TYPE = {
 }
 
 export type INITIAL_PARTNER_STATE_TYPE = {
-    partner: null | CUSTOMER_TYPE
+    partner: null | PARTNER_TYPE
     allPartners: Array<PARTNER_TYPE>
     loadingPartner: boolean
+    error: any
+}
+
+/***************************************************************
+ * TARIF
+***************************************************************/
+export type TARIF_TYPE = {
+    id?: string,
+    tarif: string,
+    description: string
+}
+
+export type INITIAL_TARIF_STATE_TYPE = {
+    tarif: null | TARIF_TYPE
+    allTarifs: Array<TARIF_TYPE>
+    loadingTarif: boolean
     error: any
 }
 
@@ -92,6 +108,7 @@ export type COLUMN_DATA_TABLE_TYPE = {
     signature: string
     description: string
     logo: string | File
+    tarif: string
     createdAt: Date
     updatedAt: Date
 }

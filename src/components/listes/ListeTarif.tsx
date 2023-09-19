@@ -1,32 +1,32 @@
 import React, { FC, useState } from 'react'
+import { COLUMN_DATA_TABLE_TYPE } from '../../utils/types'
+import { useSelector } from 'react-redux'
+import { ROOT_REDUCER_TYPE } from '../../redux/store'
+import Popup from 'reactjs-popup'
 import ListeContainer from '../liste/ListeContainer'
 import Liste from '../liste/Liste'
-import { COLUMN_DATA_TABLE_TYPE } from '../../utils/types'
-import { ROOT_REDUCER_TYPE } from '../../redux/store'
-import { useSelector } from 'react-redux'
-import Popup from 'reactjs-popup'
-import PartnerModal from '../liste/modal_display_edit_delete/PartnerModal'
 
 // importation icons
 import { AiOutlineDelete, AiOutlineEye } from 'react-icons/ai'
 import { CiEdit } from 'react-icons/ci'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import TarifModal from '../liste/modal_display_edit_delete/TarifModal'
 
 type COMPONENT_TYPE = {
     title: string
     setOpenAddModal: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const ListePartner: FC<COMPONENT_TYPE> = (props) => {
+const ListeTarif: FC<COMPONENT_TYPE> = (props) => {
     const { title, setOpenAddModal } = props
 
     const [value, setValue] = useState<COLUMN_DATA_TABLE_TYPE>()
     const [seeModalDisplayEditDelete, setSeeModalDisplayEditDelete] = useState(false)
     const [type, setType] = useState('')
 
-    const { allPartners } = useSelector((state: ROOT_REDUCER_TYPE) => state.partner)
+    const { allTarifs } = useSelector((state: ROOT_REDUCER_TYPE) => state.tarif)
 
-    const data: Array<COLUMN_DATA_TABLE_TYPE> = allPartners
+    const data: Array<COLUMN_DATA_TABLE_TYPE> = allTarifs
 
     const handleDisplay = (type: string, value: COLUMN_DATA_TABLE_TYPE) => {
         if (type === 'afficher') {
@@ -46,7 +46,7 @@ const ListePartner: FC<COMPONENT_TYPE> = (props) => {
 
     const columns = [
         { name: <h3>#</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
-        { name: <h3>Nom</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
+        { name: <h3>Tarif</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.tarif, sortable: true },
         { name: <h3>Description</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row?.description?.length < 50 ? row?.description : row?.description?.substring(0, 50) + '...' },
         {
             name: <h3 style={{ width: '100%', textAlign: 'center' }}>Action</h3>,
@@ -76,14 +76,14 @@ const ListePartner: FC<COMPONENT_TYPE> = (props) => {
     ]
 
     return (
-        <ListeContainer name='Liste des partenaires'>
+        <ListeContainer name='Liste des tarifs'>
             <>
                 <Liste title={title} columns={columns} data={data} setOpenAddModal={setOpenAddModal} />
 
-                <PartnerModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
+                <TarifModal type={type} row={value as COLUMN_DATA_TABLE_TYPE} seeModalDisplayEditDelete={seeModalDisplayEditDelete} setSeeModalDisplayEditDelete={setSeeModalDisplayEditDelete} />
             </>
         </ListeContainer>
     )
 }
 
-export default ListePartner
+export default ListeTarif

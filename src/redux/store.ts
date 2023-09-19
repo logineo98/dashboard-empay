@@ -8,12 +8,14 @@ import thunk from 'redux-thunk'
 import adminReducer from './reducers/admin.reducer'
 import customerReducer from './reducers/customer.reducer'
 import partnerReducer from './reducers/partner.reducer'
+import tarifReducer from './reducers/tarif.reducer'
 
 // regrouper tous les reducers
 const rootReducer = combineReducers({
     admin: adminReducer,
     customer: customerReducer,
     partner: partnerReducer,
+    tarif: tarifReducer
 })
 
 export type ROOT_REDUCER_TYPE = ReturnType<typeof rootReducer>

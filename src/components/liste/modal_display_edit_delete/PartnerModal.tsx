@@ -5,6 +5,9 @@ import Divider from '../../divider/Divider'
 import { api_img } from '../../../redux/constants'
 import { useDispatch, useSelector } from 'react-redux'
 import { ROOT_REDUCER_TYPE } from '../../../redux/store'
+import { validation_partner } from '../../../utils/validations'
+import { _deletePartner, _editPartner } from '../../../redux/actions/partner.action'
+import { displayDate } from '../../../utils/functions'
 
 type COMPONENT_TYPE = {
     type: string
@@ -25,25 +28,44 @@ const PartnerModal: FC<COMPONENT_TYPE> = (props) => {
     const [previewImg, setPreviewImg] = useState<string | File>('')
     const [err, setErr] = useState<PARTNER_TYPE>()
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => setEditPartner({ ...editPartner, [e.target.id]: e.target.value })
+    const handleSubmit = () => {
+        if (type === 'modifier') {
+            const { error, initialError } = validation_partner(editPartner)
 
-    // {
-    //     setEditPartner({ ...editPartner, logo: e.target.files ? e.target.files[0] : '' });
-    //     if (e.target.files && e.target.files.length !== 0) { setPreviewImg(URL.createObjectURL(e.target.files[0])); }
-    //     else { setPreviewImg('') }
-    // }
+            if (error.logo !== initialError.logo || error.name !== initialError.name || error.description !== initialError.description) {
+                setErr(error)
+            } else {
+                setErr(initialError)
+
+                const { id, logo, name, description } = editPartner
+
+                const data = new FormData()
+                data.append('name', name)
+                data.append('description', description)
+                if (typeof logo !== 'string') data.append('logo', logo)
+
+                id && dispatch(_editPartner(id, data, setSeeModalDisplayEditDelete))
+            }
+        } else if (type === 'supprimer') {
+            dispatch(_deletePartner(row?.id, setSeeModalDisplayEditDelete))
+        }
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>) => setEditPartner({ ...editPartner, [e.target.id]: e.target.value })
 
     const handleChangeLogoImg = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length !== 0) {
             setPreviewImg(URL.createObjectURL(e.target.files[0]))
+            setEditPartner({ ...editPartner, logo: e.target.files[0] })
         } else {
             setPreviewImg('')
+            setEditPartner({ ...editPartner, logo: row?.logo })
         }
     }
-    console.log('previewImg', previewImg)
 
     useEffect(() => {
         setEditPartner({ id: row ? row.id : '', name: row ? row.name : '', description: row ? row.description : '', logo: row ? row.logo : '', })
+        type === 'modifier' && setPreviewImg('')
     }, [row])
 
     return (
@@ -74,12 +96,26 @@ const PartnerModal: FC<COMPONENT_TYPE> = (props) => {
                                     <span className='value'> {row?.description} </span>
                                 </div>
                             </div>
+
+                            <Divider marginVertical='0' />
+
+                            <div className='display_information_container' style={{ marginTop: 10, }}>
+                                <div className='display_information'>
+                                    <span className='title'>Date de création</span>
+                                    <span className='value'> {displayDate((new Date(row?.createdAt)).getTime())} </span>
+                                </div>
+
+                                <div className='display_information'>
+                                    <span className='title'>Date de dernière modification</span>
+                                    <span className='value'> {displayDate((new Date(row?.updatedAt)).getTime())} </span>
+                                </div>
+                            </div>
                         </div>
                     </Modal>
                 }
 
                 {type === 'modifier' &&
-                    <Modal title='Modification du partenaire' setOpenAddModal={setSeeModalDisplayEditDelete}>
+                    <Modal title='Modification du partenaire' loading={loadingPartner} setOpenAddModal={setSeeModalDisplayEditDelete} show_modal_bottom handleSubmit={handleSubmit} close_btn_name='Annuler' error_data={data} setErrorData={setErr}>
                         <div className='modal_content'>
                             <div className='add_edit_file_label_container'>
                                 <label>Logo</label>
@@ -91,12 +127,14 @@ const PartnerModal: FC<COMPONENT_TYPE> = (props) => {
                                         <img src={`${api_img}/${row?.logo}`} alt='logo_partner' />
                                     </label>
                                 }
-                                <div className='choose_logo_cancel_container'>
-                                    <label htmlFor='logo' className='choose_logo'>Choisir une logo
-                                        <input type='file' accept='.jpg, .jpeg, .png' name='logo' id='logo' onChange={handleChangeLogoImg} />
-                                    </label>
-                                    <label className='cancel' onClick={() => setPreviewImg('')}>Annuler</label>
-                                </div>
+                                {!loadingPartner &&
+                                    <div className='choose_logo_cancel_container'>
+                                        <label htmlFor='logo' className='choose_logo'>Choisir une logo
+                                            <input type='file' accept='.jpg, .jpeg, .png' name='logo' id='logo' onChange={handleChangeLogoImg} />
+                                        </label>
+                                        {previewImg && <label className='cancel' onClick={() => { setPreviewImg(''); setEditPartner({ ...editPartner, logo: row?.logo }) }}>Annuler</label>}
+                                    </div>
+                                }
 
                                 {err?.logo && <span className='error'> {err?.logo as string} </span>}
                             </div>
@@ -113,6 +151,19 @@ const PartnerModal: FC<COMPONENT_TYPE> = (props) => {
                                 <label htmlFor='description'>Description</label>
                                 <textarea name='description' id='description' value={editPartner.description} disabled={loadingPartner} placeholder='Description' onChange={handleChange}></textarea>
                                 {err?.description && <span className='error'> {err?.description} </span>}
+                            </div>
+                        </div>
+                    </Modal>
+                }
+
+                {type === 'supprimer' &&
+                    <Modal title='Suppression du partenaire' loading={loadingPartner} setOpenAddModal={setSeeModalDisplayEditDelete} show_modal_bottom handleSubmit={handleSubmit} close_btn_name='NON' send_btn_name='OUI'>
+                        <div className='modal_content'>
+                            <div className='delete_container'>
+                                <p className='ask'>
+                                    Voulez-vous vraiment supprimer
+                                    <span className='name'> {row?.name} </span> ?
+                                </p>
                             </div>
                         </div>
                     </Modal>

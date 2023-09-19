@@ -18,11 +18,17 @@ const Search: FC<COMPONENT_TYPE> = (props) => {
     }, [data])
 
     useEffect(() => {
-        const result = data?.filter(data =>
-            data?.username?.toLowerCase().match(search.toLocaleLowerCase()) ||
-            data?.name?.toLowerCase().match(search.toLocaleLowerCase()) ||
-            data?.email?.toLowerCase().match(search.toLocaleLowerCase()) ||
-            data?.role?.toLowerCase().match(search.toLocaleLowerCase())
+        const result = data?.filter(item =>
+            item?.username?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.name?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.email?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.role?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.phone?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.firstname?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.address?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.accountUBA?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.description?.toLowerCase().includes(search.toLowerCase()) ||
+            item?.tarif?.toLowerCase().includes(search.toLowerCase())
         )
 
         setFilteredDataSearch(result)

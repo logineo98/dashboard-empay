@@ -4,6 +4,7 @@ export const api_img = 'http://192.168.50.82:9000'
 export const admin = `${api}/admins`
 export const customer = `${api}/customers`
 export const partner = `${api}/partenaires`
+export const tarif = `${api}/tarifs`
 
 // admin
 export const LOADING_ADMIN = 'LOADING_ADMIN'
@@ -32,3 +33,11 @@ export const GET_ALL_PARTNERS = 'GET_ALL_PARTNERS'
 export const ADD_PARTNER = 'ADD_PARTNER'
 export const EDIT_PARTNER = 'EDIT_PARTNER'
 export const DELETE_PARTNER = 'DELETE_PARTNER'
+
+// tarif
+export const LOADING_TARIF = 'LOADING_TARIF'
+export const ERROR_TARIF = 'ERROR_TARIF'
+export const GET_ALL_TARIFS = 'GET_ALL_TARIFS'
+export const ADD_TARIF = 'ADD_TARIF'
+export const EDIT_TARIF = 'EDIT_TARIF'
+export const DELETE_TARIF = 'DELETE_TARIF'

@@ -98,6 +98,17 @@ const CustomerModal: FC<COMPONENT_TYPE> = (props) => {
                             <Divider marginVertical='0' />
 
                             <div className='display_information_container' style={{ marginTop: 10, }}>
+                                <div className='display_information w_100'>
+                                    <span className='title'>Signature du client</span>
+                                    <div className='img_container'>
+                                        <img src={`${api_img}/${row?.signature}`} alt='Signature_du_client' />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Divider marginVertical='0' />
+
+                            <div className='display_information_container' style={{ marginTop: 10, }}>
                                 <div className='display_information'>
                                     <span className='title'>Date de création</span>
                                     <span className='value'> {displayDate((new Date(row?.createdAt)).getTime())} </span>

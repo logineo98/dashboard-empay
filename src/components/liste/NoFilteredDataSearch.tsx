@@ -12,6 +12,8 @@ const NoFilteredDataSearch: FC<COMPONENT_TYPE> = ({ title }) => {
         return <h2 className='no_data'>Aucun client trouvé !</h2>
     } else if (title === 'partner') {
         return <h2 className='no_data'>Aucun partenaire trouvé !</h2>
+    } else if (title === 'tarif') {
+        return <h2 className='no_data'>Aucun tarif trouvé !</h2>
     } else {
         return <></>
     }

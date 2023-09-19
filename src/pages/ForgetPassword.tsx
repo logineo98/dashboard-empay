@@ -79,7 +79,7 @@ const ForgetPassword: PAGE_COMPONENT_TYPE = () => {
                     <div className='search_email_or_username_or_phone_container'>
                         <div className='input_container'>
                             <label htmlFor='email'>Veuillez entrer l'email | nom d'utilisateur</label>
-                            <input type='text' name='email' id='email' placeholder={'Email ou nom d\'utilisateur'} value={emailOrUsernameOrPhone} onChange={e => setEmailOrUsernameOrPhone(e.target.value)} />
+                            <input type='text' name='email' id='email' disabled={loadingAdmin} placeholder={'Email ou nom d\'utilisateur'} value={emailOrUsernameOrPhone} onChange={e => setEmailOrUsernameOrPhone(e.target.value)} />
                         </div>
 
                         <div className='forget_send_back'>
@@ -96,11 +96,11 @@ const ForgetPassword: PAGE_COMPONENT_TYPE = () => {
                         <div className='input_write_code_send_container'>
                             <label>Veuillez saisir le code reçu par email</label>
                             <div className='inputs_container'>
-                                <input type='text' name='first' id='first' className='number' maxLength={1} value={codeSend.first} onChange={manageWriteCodeSend} />
-                                <input type='text' name='second' id='second' className='number' maxLength={1} value={codeSend.second} onChange={manageWriteCodeSend} />
-                                <input type='text' name='third' id='third' className='number' maxLength={1} value={codeSend.third} onChange={manageWriteCodeSend} />
-                                <input type='text' name='fourth' id='fourth' className='number' maxLength={1} value={codeSend.fourth} onChange={manageWriteCodeSend} />
-                                <input type='text' name='fifth' id='fifth' className='number' maxLength={1} value={codeSend.fifth} onChange={manageWriteCodeSend} />
+                                <input type='text' name='first' id='first' className='number' disabled={loadingAdmin} maxLength={1} value={codeSend.first} onChange={manageWriteCodeSend} />
+                                <input type='text' name='second' id='second' className='number' disabled={loadingAdmin} maxLength={1} value={codeSend.second} onChange={manageWriteCodeSend} />
+                                <input type='text' name='third' id='third' className='number' disabled={loadingAdmin} maxLength={1} value={codeSend.third} onChange={manageWriteCodeSend} />
+                                <input type='text' name='fourth' id='fourth' className='number' disabled={loadingAdmin} maxLength={1} value={codeSend.fourth} onChange={manageWriteCodeSend} />
+                                <input type='text' name='fifth' id='fifth' className='number' disabled={loadingAdmin} maxLength={1} value={codeSend.fifth} onChange={manageWriteCodeSend} />
                             </div>
                         </div>
 
@@ -119,7 +119,7 @@ const ForgetPassword: PAGE_COMPONENT_TYPE = () => {
                     <div className='write_new_password_container'>
                         <div className='input_container'>
                             <label htmlFor='password'>Veuillez saisir le nouveau mot de passe</label>
-                            <input type={seePassword ? 'text' : 'password'} name='password' id='password' className='password' placeholder='Mot de passe' onChange={e => setPassword(e.target.value)} />
+                            <input type={seePassword ? 'text' : 'password'} name='password' id='password' className='password' disabled={loadingAdmin} placeholder='Mot de passe' onChange={e => setPassword(e.target.value)} />
                             {seePassword ? <AiOutlineEyeInvisible className='icon' onClick={() => { setSeePassword(prev => !prev); document.getElementById('password')?.focus() }} title='Masquer le mot de passe' /> : <AiOutlineEye className='icon' onClick={() => { setSeePassword(prev => !prev); document.getElementById('password')?.focus() }} title='Afficher le mot de passe' />}
                         </div>
 

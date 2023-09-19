@@ -4,7 +4,7 @@ import PageContainer from '../components/page_container/PageContainer'
 import { page_customer } from '../utils/page_name'
 import TitleLink from '../components/title_link/TitleLink'
 import { _getAllCustomers } from '../redux/actions/customer.action'
-import ListCustomer from '../components/listes/ListCustomer'
+import ListCustomer from '../components/listes/ListeCustomer'
 
 const Client = () => {
 

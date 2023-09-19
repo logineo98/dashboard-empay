@@ -154,7 +154,7 @@ export const _deleteAdmin = (id: string, setSeeModalDisplayEditDelete: React.Dis
 
         setSeeModalDisplayEditDelete(false)
 
-        dispatch({ type: DELETE_ADMIN, payload: { data: response.data, id } })
+        dispatch({ type: DELETE_ADMIN, payload: response.data })
     } catch (error: any) {
         toast.error(error?.response?.data)
         dispatch(_errorAdmin(error?.response?.data))

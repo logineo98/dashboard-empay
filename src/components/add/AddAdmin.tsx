@@ -43,7 +43,7 @@ const AddAdmin: FC<COMPONENT_TYPE> = (props) => {
 
     return (
         !openAddModal ? <></> :
-            <Modal title='Administrateur' loading={loadingAdmin} setOpenAddModal={setOpenAddModal} show_modal_bottom handleSubmit={handleSubmit}>
+            <Modal title='Ajout administrateur' loading={loadingAdmin} setOpenAddModal={setOpenAddModal} show_modal_bottom handleSubmit={handleSubmit} error_data={data} setErrorData={setErr}>
                 <div className='modal_content'>
                     <div className='add_edit_input_label_container'>
                         <label htmlFor='username'>Nom d'utilisateur</label>

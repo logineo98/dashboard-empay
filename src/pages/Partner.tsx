@@ -5,6 +5,7 @@ import TitleLink from '../components/title_link/TitleLink'
 import { useDispatch } from 'react-redux'
 import { _getAllPartners } from '../redux/actions/partner.action'
 import ListePartner from '../components/listes/ListePartner'
+import AddPartner from '../components/add/AddPartner'
 
 const Partner = () => {
 
@@ -21,7 +22,7 @@ const Partner = () => {
             <div className='right_part_container'>
                 <TitleLink title='Partenaire' links={['Partenaire']} />
 
-                {/* <AddAdmin openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} /> */}
+                <AddPartner openAddModal={openAddModal} setOpenAddModal={setOpenAddModal} />
                 <ListePartner title='partner' setOpenAddModal={setOpenAddModal} />
             </div>
         </PageContainer>

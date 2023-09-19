@@ -1,9 +1,9 @@
-import { IconType } from 'react-icons'
 
 // importation icons
+import { IconType } from 'react-icons'
 import { AiOutlineDashboard } from 'react-icons/ai'
 import { CiMobile3 } from 'react-icons/ci'
-import { MdOutlineAdminPanelSettings } from 'react-icons/md'
+import { MdOutlineAdminPanelSettings, MdOutlineAttachMoney } from 'react-icons/md'
 import { PiUsersThreeLight } from 'react-icons/pi'
 
 type COMPONENT_TYPE = Array<{
@@ -17,6 +17,9 @@ export const menus: COMPONENT_TYPE = [
     },
     {
         menu_name: 'Partenaire', menu_url: '/partner', menu_icon: PiUsersThreeLight,
+    },
+    {
+        menu_name: 'Tarif', menu_url: '/tarif', menu_icon: MdOutlineAttachMoney,
     },
     {
         menu_name: 'Client', menu_url: '/customer', menu_icon: CiMobile3,

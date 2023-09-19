@@ -46,6 +46,7 @@ const ListCustomer: FC<COMPONENT_TYPE> = (props) => {
 
     const columns = [
         { name: <h3>#</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE, i: number) => i + 1 },
+        { name: <h3>Compte UBA</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.accountUBA, sortable: true },
         { name: <h3>Nom</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.name, sortable: true },
         { name: <h3>Prénom</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.firstname, sortable: true },
         { name: <h3>Email</h3>, selector: (row: COLUMN_DATA_TABLE_TYPE) => row.email, sortable: true },

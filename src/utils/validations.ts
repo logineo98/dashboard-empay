@@ -1,5 +1,5 @@
-import { regex } from './constants'
-import { ADMIN_TYPE } from './types'
+import { regex, upload_files } from './constants'
+import { ADMIN_TYPE, PARTNER_TYPE, TARIF_TYPE } from './types'
 
 export const validation_admin = (props: ADMIN_TYPE, type: string, confirmEditPassword?: boolean) => {
     const { username, name, email, password } = props
@@ -44,6 +44,48 @@ export const validation_admin = (props: ADMIN_TYPE, type: string, confirmEditPas
             }
         }
     }
+
+    return { error, initialError }
+}
+
+export const validation_partner = (props: PARTNER_TYPE) => {
+    const { logo, name, description } = props
+
+    const initialError: PARTNER_TYPE = { logo: '', name: '', description: '' }
+    let error = initialError
+
+    if (typeof logo === 'string') {
+        if (!logo || logo.trim() === '') {
+            error = { ...error, logo: 'Veuillez choisir un logo.' }
+        }
+    } else {
+        if (!upload_files.FILES_ALLOW_TYPES.includes(logo.type)) {
+            error = { ...error, logo: 'Seul les fichiers JPEG, PNG, JPG sont autorisés' }
+        } else if (logo.size > upload_files.MAX_SIZE) {
+            error = { ...error, logo: 'La taille du fichier ne doit pas depasser 1 Mo' }
+        }
+    }
+
+    if (!name || name.trim() === '') {
+        error = { ...error, name: 'Veuillez renseigner le champ.' }
+    }
+
+    if (!description || description.trim() === '') {
+        error = { ...error, description: 'Veuillez renseigner le champ.' }
+    }
+
+    return { error, initialError }
+}
+
+export const validation_tarif = (props: TARIF_TYPE) => {
+    const { tarif, description } = props
+
+    const initialError: TARIF_TYPE = { tarif: '', description: '' }
+    let error = initialError
+
+    if (!tarif || tarif.trim() === '') error = { ...error, tarif: 'Veuillez renseigner le champ.' }
+    if (!description || description.trim() === '') error = { ...error, description: 'Veuillez renseigner le champ.' }
+
 
     return { error, initialError }
 }
